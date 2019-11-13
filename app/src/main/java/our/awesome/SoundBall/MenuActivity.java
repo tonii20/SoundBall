@@ -83,6 +83,9 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         lastWinner = findViewById(R.id.lastWinner);
         highscoreText=findViewById(R.id.highscore);
 
+        btnSinglePlayer = findViewById(R.id.btnSinglePlayer);
+        btnMultiPlayer = findViewById(R.id.btnMultiPlayer);
+
         try {
             Bundle extras = getIntent().getExtras();
             int showbanner = extras.getInt("Banner");
@@ -139,6 +142,18 @@ public class MenuActivity extends Activity implements View.OnClickListener {
                 else
                     multiplayerActivity(view);
                 break;
+            case R.id.btnSinglePlayer:
+                if (btnSinglePlayer.getAlpha() != 1) {
+                    btnSinglePlayer.setAlpha(1);
+                    btnMultiPlayer.setAlpha(0.5f);
+                }
+                break;
+            case R.id.btnMultiPlayer:
+                if (btnMultiPlayer.getAlpha() != 1) {
+                    btnMultiPlayer.setAlpha(1);
+                    btnSinglePlayer.setAlpha(0.5f);
+                }
+                break;
             case R.id.btnLevel1:
                 speed = 7;
                 if (btnLevel1.getAlpha() != 1) {
@@ -167,18 +182,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
                 quit(view);
                 break;
 
-            case R.id.btnSinglePlayer:
-                if (btnSinglePlayer.getAlpha() != 1) {
-                    btnSinglePlayer.setAlpha(1);
-                    btnMultiPlayer.setAlpha(0.5f);
-                }
-                break;
-            case R.id.btnMultiPlayer:
-                if (btnMultiPlayer.getAlpha() != 1) {
-                    btnMultiPlayer.setAlpha(1);
-                    btnSinglePlayer.setAlpha(0.5f);
-                }
-                break;
+
             default:
                 break;
         }
