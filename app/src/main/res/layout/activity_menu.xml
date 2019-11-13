@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/musicnotee">
+
+    <ImageView
+        android:id="@+id/lastWinner"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/btnStart"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp" />
+
+    <Button
+        android:id="@+id/btnStart"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/background"
+        android:text="Start"
+        android:textColor="#E6E6E6"
+        android:textSize="18dp" />
+
+
+    <Button
+        android:id="@+id/btnLevel1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnStart"
+        android:layout_toLeftOf="@+id/btnLevel2"
+        android:alpha="1"
+        android:background="@drawable/background"
+        android:text="Speed 1"
+        android:textColor="#E6E6E6"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnLevel2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnStart"
+        android:layout_centerHorizontal="true"
+        android:alpha="0.7"
+        android:background="@drawable/background"
+        android:elevation="20dp"
+        android:text="Speed 2"
+        android:textColor="#E6E6E6"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/btnLevel3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnStart"
+        android:layout_toRightOf="@+id/btnLevel2"
+        android:alpha="0.7"
+        android:background="@drawable/background"
+        android:elevation="20dp"
+        android:onClick="level3"
+        android:text="Speed 3"
+        android:textColor="#E6E6E6"
+        android:textSize="18dp" />
+
+    <Button
+        android:id="@+id/btnQuit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnLevel2"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/background"
+        android:onClick="quitGame"
+        android:text="Quit"
+        android:textColor="#E6E6E6"
+        android:textSize="18dp" />
+
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/Banner1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="visible"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111" />
+
+</RelativeLayout>

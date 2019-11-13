@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:ads="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/totalLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:ignore="NamespaceTypo">
+
+    <LinearLayout
+        android:id="@+id/score"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_above="@+id/gameFrame"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/scorePlayer1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_weight="1"
+            android:background="@color/colorGrau"
+            android:gravity="center"
+            android:text="Score Player1:"
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnPauseResume"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@+id/scorePlayer1"
+            android:layout_weight="1"
+            android:background="@drawable/background"
+            android:onClick="pausePushed"
+            android:text="Pause"
+            android:textColor="@color/colorGrau"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnQuit"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/scorePlayer2"
+            android:layout_weight="1"
+            android:background="@drawable/background"
+            android:onClick="quit"
+            android:text="Back"
+            android:textColor="@color/colorGrau"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/scorePlayer2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_weight="1"
+            android:background="@color/colorBlack"
+            android:gravity="center"
+            android:text="Score Player2:"
+            android:textColor="@color/colorGrau"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/gameFrame"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight="10"
+        android:background="@drawable/fussballfeld">
+
+        <TextView
+            android:id="@+id/spielerFeld2"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorMarine"
+            android:layout_height="wrap_content"
+            android:text="Player 2" />
+
+        <TextView
+            android:id="@+id/TonHoch"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="right"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:background="@drawable/rounded_corner"
+            android:textColor="@color/colorRed"
+            android:layout_height="wrap_content"
+            android:text="High Tone" />
+
+        <TextView
+            android:id="@+id/TonTief"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="left"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            android:background="@drawable/rounded_corner"
+            android:textColor="@color/colorRed"
+            android:layout_height="wrap_content"
+            android:text="Low Tone" />
+
+        <ImageView
+            android:id="@+id/fussball"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/fussball" />
+
+        <TextView
+            android:id="@+id/erklärung"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="The goal of the game is to bring 3 balls over the line of the opponent. You can control your 'piano' with tones to fend off the ball. The higher the tone the further to the right the piano will move, the lower the tone the further to the left."
+            android:textColor="@color/colorRed"
+            android:textSize="20dp"
+            android:background="@drawable/rounded_corner"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/TabToStart"
+            android:layout_width="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="175dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:background="@drawable/rounded_corner"
+            android:textColor="@color/colorGrau"
+            android:layout_height="wrap_content"
+            android:text="Tab to Start" />
+
+
+        <TextView
+            android:id="@+id/spielerFeld1"
+            android:layout_width="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="100dp"
+            android:textSize="40dp"
+            android:textStyle="bold"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorMarine"
+            android:text="Player 1" />
+
+
+
+        <ImageView
+            android:id="@+id/goal"
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:background="@drawable/goooal"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/siegerBild"
+            android:layout_width="200dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/sekAnzeige"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text=""
+            android:textColor="@color/colorMarine"
+            android:textSize="70dp"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:id="@+id/player2"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/klavier2" />
+
+        <ImageView
+            android:id="@+id/player1"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom|center"
+            android:background="@drawable/klavier1" />
+
+    </FrameLayout>
+
+
+
+</LinearLayout>
