@@ -23,9 +23,9 @@
         android:id="@+id/lastWinner"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_above="@+id/btnStart"
+        android:layout_above="@+id/btnSinglePlayer"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp" />
+        />
 
     <Button
         android:id="@+id/btnSinglePlayer"

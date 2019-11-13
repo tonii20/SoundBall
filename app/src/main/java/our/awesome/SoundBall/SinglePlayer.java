@@ -44,7 +44,7 @@ public class SinglePlayer extends AppCompatActivity {
     float randomx;
     float randomy;
     float randomxminus;
-    float randomyminus;
+
     //Threadscheise
     Thread barBewegen = new Thread();
     Timer timer;
@@ -304,18 +304,11 @@ public class SinglePlayer extends AppCompatActivity {
         float v = randomx*randomx;
         randomy = (float) Math.sqrt(1.0f-v);
         randomxminus = (float) new Random().nextFloat();
-        randomyminus = (float) new Random().nextFloat();
-
 
 
         if (randomxminus > 0.5f) randomx = -randomx;
 
-        if (randomyminus > 0.5f) {
-            randomy = -randomy;
-        }
-
-
-        direction = new float[]{randomx , randomy};
+        direction = new float[]{randomx , -randomy};
 
 
     }
@@ -330,14 +323,15 @@ public class SinglePlayer extends AppCompatActivity {
 
 
         //Check if ball touches the Player
-        if (fussball.getY() >= (player1.getY() - player1.getHeight())) {
+        if (fussball.getY() >= (player1.getY() - fussball.getHeight())) {
             if (player1.getX() - size / 2 <= fussball.getX() && player1.getX() + size * 1 / 5 >= fussball.getX()) {
                 direction[1] = direction[1] * -1.0f;
                 if (direction[0] > 0) {
                     direction[0] = direction[0] * -1.0f;
                     randomxminus = 1 - randomxminus;
+
                 }
-                randomyminus = 1 - randomyminus;
+                scoreHochSetzen();
 
             } else if (player1.getX() + player1.getWidth() + size / 2 >= fussball.getX() &&
                     player1.getX() + player1.getWidth() - size * 1 / 5 <= fussball.getX()) {
@@ -345,24 +339,22 @@ public class SinglePlayer extends AppCompatActivity {
                 if (direction[0] < 0) {
                     direction[0] = direction[0] * -1.0f;
                     randomxminus = 1 - randomxminus;
+
+
                 }
-                randomyminus = 1 - randomyminus;
+                scoreHochSetzen();
 
             } else if ((player1.getX() - size / 2 <= fussball.getX()) &&
                     (player1.getX() + size / 2 + player1.getWidth() >= fussball.getX())) {
 
                 direction[1] = direction[1] * -1.0f;
-                randomyminus = 1 - randomyminus;
+                scoreHochSetzen();
+
             }
-            scoreCounter++;
-            speedIncrease++;
-            score.setText("Score: "+ scoreCounter);
-            if(speedIncrease==3){
-                speed++;
-                speedIncrease=0;
-            }
+
         }
 
+        //Check if ball touches the side Wall
         if (fussball.getX() < 0 || fussball.getX() + size > gameFrame.getWidth()) {
             direction[0] = direction[0] * -1;
             randomxminus = 1 - randomxminus;
@@ -370,7 +362,6 @@ public class SinglePlayer extends AppCompatActivity {
         //Check if ball touches the Opposite Wall
         if (fussball.getY() < 0) {
             direction[1] = direction[1] * -1.0f;
-            randomyminus = 1 - randomyminus;
         }
 
         if (fussball.getY() + size > gameFrame.getHeight()) {
@@ -380,6 +371,15 @@ public class SinglePlayer extends AppCompatActivity {
         }
     }
 
+    public void scoreHochSetzen(){
+        scoreCounter++;
+        speedIncrease++;
+        score.setText("Score: "+ scoreCounter);
+        if(speedIncrease==3){
+            speed++;
+            speedIncrease=0;
+        }
+    }
     public void gameOver() {
         Intent intentT = new Intent(this, MenuActivity.class);
         intentT.putExtra("sieger", sieger);
