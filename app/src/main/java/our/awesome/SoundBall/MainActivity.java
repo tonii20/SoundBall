@@ -350,9 +350,16 @@ public class MainActivity extends Activity {
         //Direction
         randomx = (float) new Random().nextFloat();
 
-        randomy = (float) new Random().nextFloat();
+        while(randomx>0.9||(randomx>0.6 && randomx<0.8)||randomx<0.1)
+            randomx = (float) new Random().nextFloat();
+
+        float v = randomx*randomx;
+        randomy = (float) Math.sqrt(1.0f-v);
         randomxminus = (float) new Random().nextFloat();
         randomyminus = (float) new Random().nextFloat();
+
+
+
         if (randomxminus > 0.5f) randomx = -randomx;
 
         if (randomyminus > 0.5f) {
@@ -363,27 +370,18 @@ public class MainActivity extends Activity {
         }
 
 
-        //randomy=randomy*0.75f;
+        direction = new float[]{randomx , randomy};
 
-        if (randomx < 0.5) {
-            direction = new float[]{randomx, randomy};
-        } else {
-            direction = new float[]{randomx , randomy};
-        }
 
     }
 
+
+
     public void move() {
 
-        if (randomxminus > 0.5f)
-            fussball.setX(fussball.getX() + speed * (int) direction[0] - 1.0f);
-        else
-            fussball.setX(fussball.getX() + speed * (int) direction[0] + 1.0f);
 
-        if (randomyminus > 0.5f)
-            fussball.setY(fussball.getY() + speed * (int) (direction[1] - 1.0f));
-        else
-            fussball.setY(fussball.getY() + speed * (int) (direction[1] + 1.0f));
+        fussball.setX(fussball.getX() + speed * direction[0] );
+        fussball.setY(fussball.getY() + speed * (direction[1] ));
 
 
         //Check if ball touches the Player

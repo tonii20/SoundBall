@@ -84,7 +84,11 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         highscoreText=findViewById(R.id.highscore);
 
         btnSinglePlayer = findViewById(R.id.btnSinglePlayer);
+        btnSinglePlayer.setOnClickListener(this);
+
         btnMultiPlayer = findViewById(R.id.btnMultiPlayer);
+        btnMultiPlayer.setOnClickListener(this);
+
 
         try {
             Bundle extras = getIntent().getExtras();

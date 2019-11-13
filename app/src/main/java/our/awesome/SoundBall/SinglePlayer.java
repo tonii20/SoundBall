@@ -8,6 +8,7 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -96,7 +97,7 @@ public class SinglePlayer extends AppCompatActivity {
         erklearung=findViewById(R.id.erklärung);
         tabToStart=findViewById(R.id.TabToStart);
 
-
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         gameFrame.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -297,30 +298,36 @@ public class SinglePlayer extends AppCompatActivity {
         //Direction
         randomx = (float) new Random().nextFloat();
 
-        randomy = (float) new Random().nextFloat();
+        while(randomx>0.9||(randomx>0.6 && randomx<0.8)||randomx<0.1)
+            randomx = (float) new Random().nextFloat();
+
+        float v = randomx*randomx;
+        randomy = (float) Math.sqrt(1.0f-v);
         randomxminus = (float) new Random().nextFloat();
         randomyminus = (float) new Random().nextFloat();
+
+
+
         if (randomxminus > 0.5f) randomx = -randomx;
 
-        if (randomx < 0.5) {
-            direction = new float[]{randomx, randomy};
-        } else {
-            direction = new float[]{randomx , randomy};
+        if (randomyminus > 0.5f) {
+            randomy = -randomy;
         }
+
+
+        direction = new float[]{randomx , randomy};
+
 
     }
 
+
     public void move() {
 
-        if (randomxminus > 0.5f)
-            fussball.setX(fussball.getX() + speed * (int) direction[0] - 1.0f);
-        else
-            fussball.setX(fussball.getX() + speed * (int) direction[0] + 1.0f);
 
-        if (randomyminus > 0.5f)
-            fussball.setY(fussball.getY() + speed * (int) (direction[1] - 1.0f));
-        else
-            fussball.setY(fussball.getY() + speed * (int) (direction[1] + 1.0f));
+        fussball.setX(fussball.getX() + speed * direction[0] );
+        fussball.setY(fussball.getY() + speed * (direction[1] ));
+
+
 
         //Check if ball touches the Player
         if (fussball.getY() >= (player1.getY() - player1.getHeight())) {
