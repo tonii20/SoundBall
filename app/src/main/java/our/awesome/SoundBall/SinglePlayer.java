@@ -143,12 +143,6 @@ public class SinglePlayer extends AppCompatActivity {
 
     }
 
-    public void setlevel() {
-
-        //Bundle extras = getIntent().getExtras();
-        //speed = extras.getInt("level");
-
-    }
 
     protected void startgame() {
 
@@ -383,6 +377,7 @@ public class SinglePlayer extends AppCompatActivity {
         Intent intentT = new Intent(this, MenuActivity.class);
         intentT.putExtra("sieger", sieger);
         intentT.putExtra("Banner", 1);
+        intentT.putExtra("Highscore", this.scoreCounter);
         startActivity(intentT);
         handler1.removeCallbacks(task1);
         timer.cancel();
@@ -474,6 +469,7 @@ public class SinglePlayer extends AppCompatActivity {
         Intent intentT = new Intent(this, MenuActivity.class);
         intentT.putExtra("sieger", sieger);
         intentT.putExtra("Banner", 1);
+        intentT.putExtra("Highscore", this.scoreCounter);
         startActivity(intentT);
         handler1.removeCallbacks(task1);
         try {
@@ -490,18 +486,7 @@ public class SinglePlayer extends AppCompatActivity {
     }
 
 
-    public void gamegewonnen() {
-        Intent intentT = new Intent(this, MenuActivity.class);
-        intentT.putExtra("sieger", sieger);
-        intentT.putExtra("Banner", 1);
-        startActivity(intentT);
-        handler1.removeCallbacks(task1);
-        timer.cancel();
-        task1 = null;
-        audioThread.interrupt();
-        dispatcher.stop();
-        finish();
-    }
+
 
     private class Task1 extends TimerTask {
 

@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     android:background="@drawable/musicnotee">
 
+    <TextView
+        android:id="@+id/highscore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnLevel1"
+        android:layout_alignEnd="@+id/lastWinner"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="139dp"
+        android:text="Highscore: 0"
+        android:textColor="@color/colorMarine"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
     <ImageView
         android:id="@+id/lastWinner"
         android:layout_width="wrap_content"

@@ -3,12 +3,14 @@ package our.awesome.SoundBall;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
@@ -31,6 +33,9 @@ public class MenuActivity extends Activity implements View.OnClickListener {
     private InterstitialAd mInterstitialAd;
     private AdView mAdView;
     private View rl;
+    private TextView highscoreText;
+    SharedPreferences mPrefs;
+    int highscore =0;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,8 +57,13 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
-        rl = findViewById(R.id.relativeLayout);
 
+        mPrefs = getSharedPreferences("label", 0);
+        highscore = mPrefs.getInt("tag1", 0);
+
+
+
+        rl = findViewById(R.id.relativeLayout);
 
         btnStart = findViewById(R.id.btnStart);
         btnStart.setOnClickListener(this);
@@ -71,11 +81,14 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         btnQuit.setOnClickListener(this);
 
         lastWinner = findViewById(R.id.lastWinner);
+        highscoreText=findViewById(R.id.highscore);
 
         try {
             Bundle extras = getIntent().getExtras();
             int showbanner = extras.getInt("Banner");
             int sieger = extras.getInt("sieger");
+            int high = extras.getInt("Highscore");
+
             if (showbanner != 0) {
                 mInterstitialAd.setAdListener(new AdListener() {
                     public void onAdLoaded() {
@@ -83,6 +96,13 @@ public class MenuActivity extends Activity implements View.OnClickListener {
                     }
                 });
             }
+
+            if (high!= 0) {
+                if(high>highscore);
+                highscore=high;
+                    }
+
+
             if (sieger != 0) {
                 if (sieger == 1)
                     lastWinner.setImageResource(R.drawable.player1wins);
@@ -94,7 +114,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         } catch (Exception e) {
 
         }
-
+        highscoreText.setText("Highscore: "+highscore);
         btnLevel1.setAlpha(1);
 
 
@@ -114,8 +134,10 @@ public class MenuActivity extends Activity implements View.OnClickListener {
 
             case R.id.btnStart:
 
-
-                mainActivity(view);
+                if(btnSinglePlayer.getAlpha()==1)
+                    singleplayerActivity(view);
+                else
+                    multiplayerActivity(view);
                 break;
             case R.id.btnLevel1:
                 speed = 7;
@@ -164,7 +186,7 @@ public class MenuActivity extends Activity implements View.OnClickListener {
     }
 
 
-    public void mainActivity(View view) {
+    public void multiplayerActivity(View view) {
         Intent intentT = new Intent(this, MainActivity.class);
 
         intentT.putExtra("level", speed);
@@ -172,8 +194,22 @@ public class MenuActivity extends Activity implements View.OnClickListener {
         finish();
     }
 
+    public void singleplayerActivity(View view) {
+        Intent intentT = new Intent(this, SinglePlayer.class);
+        startActivity(intentT);
+        finish();
+    }
 
+    @Override
+    public void onStop(){
+        SharedPreferences.Editor mEditor = mPrefs.edit();
+        mEditor.putInt("tag1" , highscore);
+        super.onStop();
+
+    }
     public void quit(View view) {
+        SharedPreferences.Editor mEditor = mPrefs.edit();
+        mEditor.putInt("tag1" , highscore);
         finish();
         moveTaskToBack(true);
     }
