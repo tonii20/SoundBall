@@ -15,6 +15,33 @@
         android:layout_marginTop="100dp" />
 
     <Button
+        android:id="@+id/btnSinglePlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnStart"
+        android:layout_centerHorizontal="true"
+        android:alpha="1"
+        android:background="@drawable/background"
+        android:text="Single Player"
+        android:textColor="#E6E6E6"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnMultiPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnQuit"
+        android:layout_centerHorizontal="true"
+        android:alpha="0.5"
+        android:background="@drawable/background"
+        android:text="Multi Player"
+        android:textColor="#E6E6E6"
+        android:textSize="18dp"
+        android:textStyle="bold" />
+
+
+    <Button
         android:id="@+id/btnStart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -44,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnStart"
         android:layout_centerHorizontal="true"
-        android:alpha="0.7"
+        android:alpha="0.5"
         android:background="@drawable/background"
         android:elevation="20dp"
         android:text="Speed 2"
@@ -57,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btnStart"
         android:layout_toRightOf="@+id/btnLevel2"
-        android:alpha="0.7"
+        android:alpha="0.5"
         android:background="@drawable/background"
         android:elevation="20dp"
         android:onClick="level3"

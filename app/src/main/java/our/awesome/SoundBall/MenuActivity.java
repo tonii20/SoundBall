@@ -26,7 +26,7 @@ import our.awesome.SoundBall.R;
 
 public class MenuActivity extends Activity implements View.OnClickListener {
     protected ImageView lastWinner;
-    private Button btnStart, btnLevel1, btnLevel2, btnLevel3, btnQuit;
+    private Button btnStart, btnLevel1, btnLevel2, btnLevel3, btnQuit, btnSinglePlayer, btnMultiPlayer;
     private int speed = 7;
     private InterstitialAd mInterstitialAd;
     private AdView mAdView;
@@ -121,32 +121,44 @@ public class MenuActivity extends Activity implements View.OnClickListener {
                 speed = 7;
                 if (btnLevel1.getAlpha() != 1) {
                     btnLevel1.setAlpha(1);
-                    btnLevel2.setAlpha(0.7f);
-                    btnLevel3.setAlpha(0.7f);
+                    btnLevel2.setAlpha(0.5f);
+                    btnLevel3.setAlpha(0.5f);
                 }
                 break;
             case R.id.btnLevel2:
                 speed = 9;
                 if (btnLevel2.getAlpha() != 1) {
                     btnLevel2.setAlpha(1);
-                    btnLevel3.setAlpha(0.7f);
-                    btnLevel1.setAlpha(0.7f);
+                    btnLevel3.setAlpha(0.5f);
+                    btnLevel1.setAlpha(0.5f);
                 }
                 break;
             case R.id.btnLevel3:
                 speed = 11;
                 if (btnLevel3.getAlpha() != 1) {
                     btnLevel3.setAlpha(1);
-                    btnLevel2.setAlpha(0.7f);
-                    btnLevel1.setAlpha(0.7f);
+                    btnLevel2.setAlpha(0.5f);
+                    btnLevel1.setAlpha(0.5f);
                 }
                 break;
             case R.id.btnQuit:
                 quit(view);
                 break;
+
+            case R.id.btnSinglePlayer:
+                if (btnSinglePlayer.getAlpha() != 1) {
+                    btnSinglePlayer.setAlpha(1);
+                    btnMultiPlayer.setAlpha(0.5f);
+                }
+                break;
+            case R.id.btnMultiPlayer:
+                if (btnMultiPlayer.getAlpha() != 1) {
+                    btnMultiPlayer.setAlpha(1);
+                    btnSinglePlayer.setAlpha(0.5f);
+                }
+                break;
             default:
                 break;
-
         }
 
     }
