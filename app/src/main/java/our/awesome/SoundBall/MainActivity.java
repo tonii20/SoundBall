@@ -9,14 +9,23 @@ import android.os.CountDownTimer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 
 import java.util.Random;
 import java.util.Timer;
@@ -76,6 +85,7 @@ public class MainActivity extends Activity {
     private TextView scorePlayer1, scorePlayer2, spielerFeld1, spielerFeld2, tonHoch, tonTief, erklearung, tabToStart;
     private int score1, score2;
     private int sieger;
+    private AdView mAdView;
 
     public void setlevel() {
 
@@ -107,7 +117,7 @@ public class MainActivity extends Activity {
         erklearung=findViewById(R.id.erklärung);
         tabToStart=findViewById(R.id.TabToStart);
 
-
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         gameFrame.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +131,7 @@ public class MainActivity extends Activity {
         });
 
     }
+
 
     public void onWindowFocusChanged(boolean hasFocus) {
         // TODO Auto-generated method stub
@@ -149,6 +160,15 @@ public class MainActivity extends Activity {
                 player2.getLayoutParams().width = frameWidth / 5;
 
 
+
+                View adContainer = findViewById(R.id.Banner11);
+
+                AdView mAdView = new AdView(this);
+                mAdView.setAdSize(AdSize.BANNER);
+                mAdView.setAdUnitId("ca-app-pub-3940256099942544/6300978111");
+                ((RelativeLayout)adContainer).addView(mAdView);
+                AdRequest adRequest = new AdRequest.Builder().build();
+                mAdView.loadAd(adRequest);
             }
 
         }
