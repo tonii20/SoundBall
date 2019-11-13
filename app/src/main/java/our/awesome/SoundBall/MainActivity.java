@@ -387,7 +387,7 @@ public class MainActivity extends Activity {
 
 
         //Check if ball touches the Player
-        if (fussball.getY() >= (player1.getY() - player1.getHeight())) {
+        if (fussball.getY() - fussball.getHeight()/2 >= (player1.getY() - player1.getHeight())) {
             if (player1.getX() - size / 2 <= fussball.getX() && player1.getX() + size * 1 / 5 >= fussball.getX()) {
                 direction[1] = direction[1] * -1.0f;
                 if (direction[0] > 0) {

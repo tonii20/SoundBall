@@ -198,12 +198,22 @@
     </FrameLayout>
 
 
-    <RelativeLayout
-        android:id="@+id/Banner11"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center|bottom"
-        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/Banner11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|bottom"
+            />
+
+    </LinearLayout>
+
+
 
 
 </LinearLayout>
